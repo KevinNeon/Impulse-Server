@@ -1,4 +1,4 @@
-// Custom Wavelength scripts.
+// Custom SpacialGaze scripts.
 'use strict';
 
 exports.BattleScripts = {
