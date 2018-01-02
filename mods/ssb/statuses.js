@@ -329,7 +329,7 @@ exports.BattleStatuses = {
 		exists: true,
 		onSourceFaint: function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({spa:1}, source);
+				this.boost({spa: 1}, source);
 			}
 		},
 	},

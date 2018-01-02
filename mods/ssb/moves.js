@@ -634,7 +634,7 @@ exports.BattleMovedex = {
 		type: "Dark",
 	},
 	// iSteelX
-	deepsleep:{
+	deepsleep: {
 		category: "Status",
 		id: "deepsleep",
 		isNonstandard: true,
