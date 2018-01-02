@@ -247,8 +247,8 @@ exports.commands = {
 			if (params.some(parameter => !parameter)) return;
 
 			const options = params.splice(1);
-			if (options.length > 8) {
-				return this.errorReply("Too many options for poll (maximum is 8).");
+			if (options.length > 50) {
+				return this.errorReply("Too many options for poll (maximum is 50).");
 			}
 			if (room.poll && room.pollNumber) room.pollNumber++;
 			if (room.poll && room.poll.pollArray[0] && room.poll.pollArray[1] && room.poll.pollArray[2] && room.poll.pollArray[3] && !room.poll.pollArray[4]) {
