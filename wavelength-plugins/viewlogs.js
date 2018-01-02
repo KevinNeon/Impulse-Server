@@ -7,7 +7,8 @@ const fs = require('fs');
 const MAX_LINES = 1000;
 
 exports.commands = {
-	viewlogs: function (target, room, user) {		if (target) {
+	viewlogs: function (target, room, user) {
+		if (target) {
 			let targets = target.split(',');
 			for (let u in targets) targets[u] = targets[u].trim();
 			if (!targets[1]) return this.errorReply("Please use /viewlogs with no target.");
@@ -257,4 +258,4 @@ function parseMessage(message, user) {
 		break;
 	}
 	return message;
-} 
+}
