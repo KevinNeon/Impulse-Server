@@ -9,6 +9,10 @@ exports.serverIp = '54.215.197.157';
 // serverName for renaming many features/plugins.
 exports.serverName = 'Impulse';
 
+// Id & token
+exports.serverid = 'impulse';
+exports.servertoken = 'tnLInPTGFlNv';
+
 // The server address - the address at which Pokemon Showdown should be hosting
 //   This should be kept set to 0.0.0.0 unless you know what you're doing.
 exports.bindaddress = '0.0.0.0';
