@@ -478,13 +478,6 @@ exports.grouplist = [
 		broadcast: true,
 	},
 	{
-	    symbol: '$',
-	    id: "activeuser",
-	    name: "Active User",
-	    inherit: ' ',
-	    broadcast: true,
-	},
-	{
 		symbol: ' ',
 		ip: 's',
 	},
