@@ -65,8 +65,8 @@ function addExp(user, room, amount) {
 				switch (level) {
 				case 5:
 					Economy.logTransaction(user.userid + ' received 5 ' + currencyPlural + ' for reaching level ' + level + '.');
-						Economy.writeMoney(user.userid, 5);
-						reward = ' 5 ' + currencyPlural + '';
+					Economy.writeMoney(user.userid, 5);
+					reward = ' 5 ' + currencyPlural + '';
 					break;
 				case 10:
 					Economy.logTransaction(user.userid + ' received a custom avatar for reaching level ' + level + '.');
