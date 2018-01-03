@@ -333,13 +333,13 @@ exports.github = {
 //     - gamemanagement: enable/disable games and minigames.
 
 exports.grouplist = [
-    {
-        symbol: '♼',
-        id: "owner",
-        name: "Owner",
-        root: true,
-        globalonly: true,
-    },
+	{
+		symbol: '♼',
+		id: "owner",
+		name: "Owner",
+		root: true,
+		globalonly: true,
+	},
 	{
 		symbol: '~',
 		id: "admin",
