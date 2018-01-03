@@ -916,7 +916,7 @@ exports.commands = {
 				output += '<tr>';
 				output += '<td class="gangtd" style="box-shadow: 0px 0px 10px white inset"><img src="' + curLeague.icon + '" width="33px" height="33px"> ' + Chat.escapeHTML(curLeague.name) + '</td>';
 				output += '<td class="gangtd" style="box-shadow: 0px 0px 1px white inset">' + Autolinker.link(desc.replace(/&#x2f;/g, '/'), {stripPrefix: false, phone: false, twitter: false}) + '</td>';
-				output += '<td class="gangtd" style="box-shadow: 0px 0px 10px white inset">' + '<button name="send" value="guild points log ' + curLeague.id + '">' + curLeague.points + '</button></td>';
+				output += '<td class="gangtd" style="box-shadow: 0px 0px 10px white inset">' + '<button name="send" value="/guild points log ' + curLeague.id + '">' + curLeague.points + '</button></td>';
 				output += '<td class="gangtd" style="box-shadow: 0px 0px 10px white inset">' + '<button name="send" value="/guild members ' + curLeague.id + '">' + curLeague.users.length + '</button></td>';
 				output += '</tr>';
 			}
@@ -1803,7 +1803,7 @@ exports.commands = {
 				"/gvg invite [user] - Invites a guild member to join the guild vs guild.<br />" +
 				"/gvg join - Joins a guild vs guild. Must be invited with /gvg invite first.<br />" +
 				"/gvg leave - Leaves a Guild vs Guild after you join. May not be used once the Guild vs Guild starts.<br />" +
-				"/rvs end - Forcibly ends a Guild vs Guild.<br /><br />" +
+				"/gvg end - Forcibly ends a Guild vs Guild.<br /><br />" +
 				"Guild Points:<br />" +
 				"/guild points give [guild], [amount] - Gives a guild points.<br />" +
 				"/guild points take [guild], [amount] - Takes points from a guild.<br />" +
