@@ -9,13 +9,17 @@ exports.commands = {
 			 "- " + WL.nameColor('Anrin N', true) + " (Owner, Sysadmin, Technical Admin, Server Host)<br />" +
 			 "<br />" +
 			 "<u><b>Major Contributors:</b></u><br />" +
-			 "- " + WL.nameColor('Hoeen Hero', true) + " (Base Repository)<br />" +
-			 "- " + WL.nameColor('Insist', true) + " (Base Repository)<br />" +
-			 "- " + WL.nameColor('Sparky Heliolisk', true) + " (SSB Leader)<br/>" +
+			 "- " + WL.nameColor('shivay', true) + " (Technical Admin, Development)<br/>" +
+			 "- " + WL.nameColor('Sparky Heliolisk', true) + " (SSB Leader, Media)<br/>" +
 			 "<br />" +
 			 "<u><b>Contributors:</b></u><br />" +
-			 "- " + WL.nameColor('A Helpful Rayquaza', true) + " (Development)<br />" +
+			 "- " + WL.nameColor('A Helpful Rayquaza', true) + " (Community Leader, Development, Aura Storm)<br />" +
+			 "- " + WL.nameColor('Xirizu', true) + " (Community Admin, Aura Storm)<br/>" +
+			 "- " + WL.nameColor('SnorlaxTheRain', true) + " (Community Admin)<br/>" +
 			 "<br />" +
+			 "<u><b>Base Repository:</b></u><br />" +
+			 "- " + WL.nameColor('HoeenHero', true) + " (Wavelength)<br />" +
+			 "- " + WL.nameColor('Insist', true) + " (Exiled)<br />" +
 			 "<u><b>Special Thanks:</b></u><br />" +
 			 "- Our Staff Members<br />" +
 			 "- Our Regular Users<br />";
