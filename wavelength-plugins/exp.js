@@ -64,9 +64,9 @@ function addExp(user, room, amount) {
 				let reward = '';
 				switch (level) {
 				case 5:
-					Economy.logTransaction(user.userid + ' received a profile background and profile music for reaching level ' + level + '.');
-					Monitor.log(user.userid + ' has earned a profile background and profile music for reaching level ' + level + '!');
-					reward = 'a Profile Background and Profile Music. To claim your profile background and profile music, contact a global staff member.';
+					Economy.logTransaction(user.userid + ' received 5 ' + currencyPlural + ' for reaching level ' + level + '.');
+						Economy.writeMoney(user.userid, 5);
+						reward = ' 5 ' + currencyPlural + '';
 					break;
 				case 10:
 					Economy.logTransaction(user.userid + ' received a custom avatar for reaching level ' + level + '.');
