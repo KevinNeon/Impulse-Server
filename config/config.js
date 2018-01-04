@@ -338,28 +338,11 @@ exports.github = {
 
 exports.grouplist = [
 	{
-		symbol: '♼',
-		id: "owner",
-		name: "Owner",
-		root: true,
-		globalonly: true,
-	},
-	{
 		symbol: '~',
 		id: "admin",
 		name: "Administrator",
 		root: true,
 		globalonly: true,
-	},
-	{
-	    symbol: '☯',
-	    id: "coadmin",
-	    name: "Co-Administrator",
-	    root: true,
-	    globalonly: true,
-	    console: false,
-	    battlemessage: false,
-	    ignorelimits: false,
 	},
 	{
 		symbol: '&',
