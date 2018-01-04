@@ -821,7 +821,7 @@ exports.commands = {
 		leave: function (target, room, user) {
 			let leagueid = toId(getLeague(user.userid));
 			if (!leagues[leagueid]) return this.errorReply("You're not in a guild.");
-			if (leagues[leagueid].ranks['owner'].users.includes(user.userid)) return this.errorReply("You can't leave a guild if you're the owner.");
+			if (leagues[leagueid].ranks['grandmaster'].users.includes(user.userid)) return this.errorReply("You can't leave a guild if you're the owner.");
 
 			for (let rank in leagues[leagueid].ranks) {
 				if (!leagues[leagueid].ranks[rank].users.includes(user.userid)) continue;
