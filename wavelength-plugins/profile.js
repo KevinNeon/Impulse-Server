@@ -398,7 +398,7 @@ exports.commands = {
 			let targetId = toId(target);
 			Sb("hasteam").set(targetId, 1);
 			this.sendReply(`${target} has been given the ability to set their team.`);
-			Users(target).popup('You have been given the ability to set your profile team.');
+			Users(targetId).popup('You have been given the ability to set your profile team.');
 		},
 
 		take: function (target, room, user) {
