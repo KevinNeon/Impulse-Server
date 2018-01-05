@@ -37,7 +37,7 @@ function updateCC() {
 function generateCSS(name, cc) {
 	let css = '';
 	name = toId(name);
-	css = '[id$="-chat.chatmessage-' + name + '"] {\ncolor: ' + cc + ' !important;\n}\n';
+	css = '[id$="-chat.chatmessage-' + name + ' em"] {\ncolor: ' + cc + ' !important;\n}\n';
 	return css;
 }
 
