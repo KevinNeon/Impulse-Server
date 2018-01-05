@@ -24,7 +24,7 @@ function updateCC() {
 	let newCss = '/* Chat Colors START */\n';
 
 	for (let name in cc) {
-		newCss += generateCSS(name, icons[name]);
+		newCss += generateCSS(name, cc[name]);
 	}
 	newCss += '/* Chat Colors END */\n';
 
