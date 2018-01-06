@@ -6,12 +6,12 @@ exports.port = 8000;
 //serverIp for parsing of custom avatars, put your server's ip here
 exports.serverIp = '54.215.197.157';
 
-// serverName for renaming many features/plugins.
-exports.serverName = 'Impulse';
-
 // Id & token
 exports.serverid = 'impulse';
 exports.servertoken = 'tnLInPTGFlNv';
+
+// serverName for renaming many features/plugins.
+exports.serverName = 'Impulse';
 
 // The server address - the address at which Pokemon Showdown should be hosting
 //   This should be kept set to 0.0.0.0 unless you know what you're doing.
@@ -31,6 +31,17 @@ exports.bindaddress = '0.0.0.0';
 //   this means or you are unfamiliar with PS' networking code, leave this set
 //   to 1.
 exports.workers = 1;
+
+exports.wsdeflate = null;
+/* exports.wsdeflate = {
+    level: 5,
+    memLevel: 8,
+    stratrgy: 0,
+    noContextTakeover: true,
+    requestNoContextTakeover: true,
+    maxWindowBits: 15,
+    requestMaxWindowBits: 15,
+}*/
 
 // TODO: allow SSL to actually be possible to use for third-party servers at
 // some point.

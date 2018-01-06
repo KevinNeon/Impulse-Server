@@ -21,14 +21,15 @@
     "cloud-env": "0.2.2",
     "node-static": "0.7.10",
     "nodemailer": "4.4.0",
-    "node-oom-heapdump": "^1.0.10"
+    "node-oom-heapdump": "^1.0.10",
+    "permessage-deflate": "^0.1.6"
   },
   "engines": {
     "node": ">=7.7.0"
   },
   "scripts": {
     "start": "node pokemon-showdown",
-    "test": "eslint --rulesdir=dev-tools/eslint --cache . && mocha"
+    "test": "eslint --rulesdir=dev-tools/eslint --cache . && tsc && mocha"
   },
   "bin": "./pokemon-showdown",
   "homepage": "http://pokemonshowdown.com",
