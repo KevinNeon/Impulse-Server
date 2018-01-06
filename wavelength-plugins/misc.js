@@ -59,14 +59,14 @@ exports.commands = {
 		this.privateModCommand(`(${user.name} used /clearall.)`);
 	},
 
-	gclearall: 'globalclearall',
+	/*clearall: 'globalclearall',
 	globalclearall: function (target, room, user) {
 		if (!this.can('gdeclare')) return false;
 
 		Rooms.rooms.forEach(room => clearRoom(room));
 		Users.users.forEach(user => user.popup('All rooms have been cleared.'));
 		this.privateModCommand(`(${user.name} used /globalclearall.)`);
-	},
+	},*/
 
 	contact: 'whotocontact',
 	wtc: 'whotocontact',
