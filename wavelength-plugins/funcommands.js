@@ -90,4 +90,17 @@ exports.commands = {
 		this.logModCommand(`${user.name} mod declared ${target}`);
 	},
 	moddeclarehelp: ["/declaremod [message] - Displays a red [message] to all authority in the respected room.  Requires * # & ~"],
+
+	ks: 'kickserver',
+	kickserver: function (target, room, user) {
+		if (!this.can('ban')) return this.errorReply("/kickserver [username] - Access Denied.");
+		if (!target) return this.parse('/help kickserver');
+		target = this.splitTarget(target);
+		let targetUser = this.targetUser;
+		if (target.length > 19) return this.errorReply("' User" + this.targetUsername + "' not found.");
+		if (!targetUser) return this.errorReply("User '" + this.targetUsername + "'not found.");
+		this.addModCommand(targetUser.name + " was kicked from the server by " + user.name + ".");
+		targetUser.disconnectAll();
+	},
+	kickserverhelp: ["/kickserver OR /ks [username] - kick an user from the server. Requires: @ & ~"],
 };
