@@ -121,7 +121,7 @@ Verifier.PM.spawn();
 
 global.WL = require('./WL.js').WL;
 
-global.Console = require('./console.js');
+global.Console = require('./console');
 
 global.Tournaments = require('./tournaments');
 
