@@ -78,7 +78,7 @@ class LoginServerInstance {
 				let buffer = '';
 				res.setEncoding('utf8');
 
-				res.on('data', (/** @type {string} */ chunk) => {
+				res.on('data', chunk => {
 					buffer += chunk;
 				});
 
@@ -89,7 +89,7 @@ class LoginServerInstance {
 				});
 			});
 
-			req.on('error', (/** @type {Error} */ error) => {
+			req.on('error', error => {
 				resolve([null, 0, error]);
 				this.openRequests--;
 			});
@@ -165,7 +165,7 @@ class LoginServerInstance {
 		let req = /** @type {any} */ (null);
 
 		let hadError = false;
-		let onReqError = (/** @type {Error} */ error) => {
+		let onReqError = error => {
 			if (hadError) return;
 			hadError = true;
 			if (this.requestTimeoutTimer) {
@@ -188,7 +188,7 @@ class LoginServerInstance {
 			let buffer = '';
 			res.setEncoding('utf8');
 
-			res.on('data', (/** @type {string} */ chunk) => {
+			res.on('data', chunk => {
 				buffer += chunk;
 			});
 
