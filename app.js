@@ -121,6 +121,8 @@ Verifier.PM.spawn();
 
 global.WL = require('./WL.js').WL;
 
+global.Console = require('./console.js');
+
 global.Tournaments = require('./tournaments');
 
 global.Ontime = {};
