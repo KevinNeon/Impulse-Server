@@ -151,13 +151,13 @@ class RandomSeasonalRegStaffTeams extends RandomTeams {
 			},
 			// Global Moderators:
 			'@SparkyHeliolisk': {
-				species: 'Heliolisk',
-				ability: 'Speed Boost',
-				item: 'Life Orb',
-				gender: 'M',
-				moves: ['Dragon Pulse', 'Hyper Voice', 'Dark Pulse',
+				species: 'Ninetales-Alola',
+				ability: 'Adaptability',
+				item: 'Leftovers',
+				gender: 'F',
+				moves: ['Moonblast', 'Hyper Voice', 'Dark Pulse',
 				],
-				signatureMove: "sparkblast",
+				signatureMove: "ultrafroststorm",
 				evs: {
 					spa: 252,
 					spe: 252,
