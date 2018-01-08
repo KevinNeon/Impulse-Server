@@ -367,9 +367,10 @@ exports.commands = {
 				'<center><code>/customtitle</code> commands<br />' +
 				'All commands are nestled under the namespace <code>pcolor</code>.</center>' +
 				'<hr width="100%">' +
-				'- <code>[set|add] [hex color]</code>: set your profile color.' +
-				'- <code>[forceset|forceadd] [username], [hex color]</code>: Sets a user\'s profile color. Requires: @ or higher.' +
-				'- <code>[remove|delete] [username]</code>: Removes a user\'s profile color and erases it from the server. Requires: @ or higher.'
+				'- <code>[set|add] [hex color]</code>: set your profile color.<br>' +
+				'- <code>[forceset|forceadd] [username], [hex color]</code>: Sets a user\'s profile color. Requires: @ or higher.<br>' +
+				'- <code>[remove|delete] [username]</code>: Removes a user\'s profile color and erases it from the server. Requires: @ or higher.<br>' +
+				'<center><b>Coded By:</b> <a href="https://github.com/AllianceSky-PS"><u>Prince Sky</u></a></center>'
 			);
 		},
 	},
