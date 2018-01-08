@@ -90,7 +90,7 @@
              "display":"Guild",
              "price":150,
              "currency":"bucks",
-             "onbuy":"You have purchased a Guild. Pm a upperstaff to get your roomshop.",
+             "onbuy":"You have purchased a Guild. Pm a upperstaff with your 3 guild members to get your guild.",
              "info":"Make ur own guild of name u choose(Not Banned words)with a guild room"
          }
       }
