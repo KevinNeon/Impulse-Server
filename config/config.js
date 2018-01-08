@@ -8,7 +8,7 @@ exports.serverIp = '54.215.197.157';
 
 // Id & token
 exports.serverid = 'impulse';
-exports.servertoken = 'tnLInPTGFlNv';
+exports.servertoken = 'HkGn1RSYexFJ';
 
 // serverName for renaming many features/plugins.
 exports.serverName = 'Impulse';
@@ -265,10 +265,10 @@ exports.customavatars = {
 // tourannouncements - announcements are only allowed in these rooms
 // tourdefaultplayercap - a set cap of how many players can be in a tournament
 // ratedtours - toggles tournaments being ladder rated (true) or not (false)
-exports.tourroom = '';
-exports.tourannouncements = [/* roomids */];
+exports.tourroom = ['lobby', 'tournaments'];
+exports.tourannouncements = ['lobby', 'tournaments'];
 exports.tourdefaultplayercap = 0;
-exports.ratedtours = false;
+exports.ratedtours = true;
 
 // appealurl - specify a URL containing information on how users can appeal
 // disciplinary actions on your section. You can also leave this blank, in
