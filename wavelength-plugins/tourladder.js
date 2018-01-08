@@ -1,18 +1,18 @@
 'use strict';
 
 WL.tourLadder = new sqlite3.Database('config/tourladder.db', () => {
-    WL.tourLadder.run('CREATE TABLE IF NOT EXISTS tourladder (userid VARCHAR(18), elo FLOAT, wins INTEGER, losses INTEGER, ties INTEGER, tourwins INTEGER);');
+	WL.tourLadder.run('CREATE TABLE IF NOT EXISTS tourladder (userid VARCHAR(18), elo FLOAT, wins INTEGER, losses INTEGER, ties INTEGER, tourwins INTEGER);');
 });
 
 let deleteLadderConfirm = false;
 
 WL.updateTourLadder = function (p1, p2, result, room) {
-    WL.tourLadder.all("SELECT * FROM tourladder WHERE userid = '" + p1.userid + "' OR userid = '" + p2.userid + "';", (err, users) => {
-        if (err) return console.log("updateTourLadder: " + err);
-        let p1entry = users.find(player => player.userid === p1.userid);
-        let p2entry = users.find(player => player.userid === p2.userid);
-        let p1elo = p1entry ? p1entry.elo : 1000, p2elo = p2entry ? p2entry.elo : 1000;
-        //Messy Elo calcs, pretty much just ripped out of ladders.js
+	WL.tourLadder.all("SELECT * FROM tourladder WHERE userid = '" + p1.userid + "' OR userid = '" + p2.userid + "';", (err, users) => {
+		if (err) return console.log("updateTourLadder: " + err);
+		let p1entry = users.find(player => player.userid === p1.userid);
+		let p2entry = users.find(player => player.userid === p2.userid);
+		let p1elo = p1entry ? p1entry.elo : 1000, p2elo = p2entry ? p2entry.elo : 1000;
+		//Messy Elo calcs, pretty much just ripped out of ladders.js
 		let K1 = 50, K2 = 50;
 		if (p1elo < 1200) {
 			if (result === 'loss') {
