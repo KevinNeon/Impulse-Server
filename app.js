@@ -125,6 +125,8 @@ global.Console = require('./console');
 
 global.Tournaments = require('./tournaments');
 
+global.Console = require('./console');
+
 global.Ontime = {};
 
 global.Dnsbl = require('./dnsbl');

@@ -1,79 +1,45 @@
-/***********************
- * Icons.js Credits:   *
- * panpawn & Lord Haji *
- * Chat Color Rewrite: *
- * Prince Sky          *
- * ********************/
-
 'use strict';
 
-let cc = {};
-const fs = require('fs');
-
-function load() {
-	fs.readFile('config/chatcolors.json', 'utf8', function (err, file) {
-		if (err) return;
-		cc = JSON.parse(file);
-	});
-}
-load();
-
-function updateCC() {
-	fs.writeFileSync('config/chatcolors.json', JSON.stringify(cc));
-
-	let newCss = '/* Chat Colors START */\n';
-
-	for (let name in cc) {
-		newCss += generateCSS(name, cc[name]);
-	}
-	newCss += '/* Chat Colors END */\n';
-
-	let file = fs.readFileSync('config/custom.css', 'utf8').split('\n');
-	if (~file.indexOf('/* Chat Colors START */')) file.splice(file.indexOf('/* Chat Colors START */'), (file.indexOf('/* Chat Colors END */') - file.indexOf('/* Chat Colors START */')) + 1);
-	fs.writeFileSync('config/custom.css', file.join('\n') + newCss);
-	WL.reloadCSS();
-}
-
-function generateCSS(name, cc) {
-	let css = '';
-	name = toId(name);
-	css = '[class$="chat.chatmessage-' + name + ' em"] {\ncolor: ' + cc + ' !important;\n}\n';
-	return css;
-}
-
 exports.commands = {
-	cc: 'chatcolor',
-	chatcolor: {
-		set: function (target, room, user) {
-			if (!this.can('roomowner')) return false;
-			target = target.split(',');
-			for (let u in target) target[u] = target[u].trim();
-			if (target.length !== 2) return this.parse('/help cc');
-			if (toId(target[0]).length > 19) return this.errorReply("Usernames are not this long...");
-			if (cc[toId(target[0])]) return this.errorReply("This user already has a custom chat color.  Do /cc delete [user] and then set their new chat color.");
-			this.sendReply("|raw|You have given " + WL.nameColor(target[0], true) + " an chat color.");
-			Monitor.adminlog(target[0] + " has received an chat color from " + user.name + ".");
-			this.privateModCommand("|raw|(" + target[0] + " has recieved chat color. from " + user.name + ".)");
-			if (Users(target[0]) && Users(target[0]).connected) Users(target[0]).popup("|html|" + WL.nameColor(user.name, true) + " has set your chat color.<br><center>Refresh, If you don't see it.</center>");
-			cc[toId(target[0])] = target[1];
-			updateCC();
+	chatcolor: 'cc',
+	cc: {
+		give: function (target, room, user) {
+			if (!this.can('ban')) return false;
+			if (!target) return this.errorReply('USAGE: /chatcolor give [USER]');
+			Db.chatcolors.set(target, 1);
+			this.sendReply(target + ' has been given the ability to use chat colors.');
+			Users(target).popup('You have been given the ability to use chat color.');
 		},
-		remove: 'delete',
-		delete: function (target, room, user) {
-			if (!this.can('roomowner')) return false;
-			target = toId(target);
-			if (!cc[toId(target)]) return this.errorReply('/cc - ' + target + ' does not have an chat color.');
-			delete cc.constructor[toId(target)];
-			updateCC();
-			this.sendReply("You removed " + target + "'s chat color.");
-			Monitor.adminlog(user.name + " removed " + target + "'s chat color.");
-			this.privateModCommand("(" + target + "'s chat color was removed by " + user.name + ".)");
-			if (Users(target) && Users(target).connected) Users(target).popup("|html|" + WL.nameColor(user.name, true) + " has removed your chat color.");
+		take: function (target, room, user) {
+			if (!this.can('ban')) return false;
+			if (!target) return this.errorReply('USAGE: /chatcolor take [USER]');
+			if (!Db.chatcolors.has(user)) return this.errorReply('This user does not have the ability to use chat colors.');
+			Db.chatcolors.remove(user);
+			this.sendReply('this user has had their ability to use chat colors is taken from them.');
+		},
+		u: 'use',
+		use: function (target, room, user) {
+			let group = user.getIdentity().charAt(0);
+			if (room.auth) group = room.auth[user.userid] || group;
+			if (user.hiding) group = ' ';
+			let targets = target.split(',');
+			if (targets.length < 2) return this.parse('/chatcolor help');
+			if (!Db.chatcolors.has(user.userid)) return this.errorReply('You dont have ability to use chat colors.');
+			if (!this.canTalk()) return this.errorReply("You may not use this command while unable to speak.");
+			this.add('|raw|' + "<small>" + group + "</small>" + "<button name='parseCommand' value='/user " + user.name + "' style='background: none ; border: 0 ; padding: 0 5px 0 0 ; font-family: &quot;verdana&quot; , &quot;helvetica&quot; , &quot;arial&quot; , sans-serif ; font-size: 9pt ; cursor: pointer'>" + WL.nameColor(user.name, true) + ":</button>" + '<b><font color="' + targets[0].toLowerCase().replace(/[^#a-z0-9]+/g, '') + '">' + Chat.escapeHTML(targets.slice(1).join(",")) + '</font></b>');
+		},
+		'': 'help',
+		help: function (target, user, room) {
+			if (!this.runBroadcast()) return;
+			this.sendReplyBox(
+				'<center><u><b>Chat Color By Prince Sky</b></u></center><br>' +
+                'All commands is nestled under namespace <code>chatcolor</code>' +
+                '<hr width="80%">' +
+                '<code>give [user] </code>- Give user ability to use chat color. Requires @ or higher.<br>' +
+                '<code>take [user] </code>- Take user\'s ability of using chat color. Requires @ or higher.<br>' +
+                '<code>use [color], [msg] </code>- Post colored msg in chat.<br>' +
+                '<code>help</code> - Displays this command.'
+			);
 		},
 	},
-	cchelp: [
-		"Commands Include:",
-		"/cc set [user], [hex color] - Gives [user] an chat color of [hex color]",
-		"/cc delete [user] - Deletes a user's chat color.",
-	],
 };
