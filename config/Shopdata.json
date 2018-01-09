@@ -82,44 +82,16 @@
          }
       }
    },
-   "ssbffa":{
-      "display":"Super Staff Bros FFA",
-      "info":"Further customize your SSBFFA pokemon with these add-ons.",
+   "guild":{
+      "display":"Guild",
+      "info":"Make Your Own Guild",
       "items":{  
-         "shiny":{  
-            "display":"Shiny",
-            "price":5,
-            "currency":"bucks",
-            "onbuy":"You can now make your SSBFFA pokemon shiny.",
-            "info":"Allows you to toggle whether or not your pokemon is shiny."
-         },
-         "ffacustomsymbol":{
-            "display":"Custom Symbol",
-            "price":10,
-            "currency":"bucks",
-            "onbuy":"You can now set a symbol on your SSBFFA pokemon.",
-            "info":"Allows you to set a custom symbol on your pokemon. Global Auth may set to their auth symbol and lower."
-         },
-         "customitem":{
-            "display":"Custom Item",
-            "price":50,
-            "currency":"bucks",
-            "onbuy":"You have purchased a Custom Item. You are now queued to have your custom item hardcoded into the format. Please note this can take some time as there may be other users ahead of you, and the Administrators are busy alot. Upper staff has been notified of your purchase and will contact you shortly to ask what you want as your custom item. Excessively powerful items will need to be changed before they are approved.<br/>",
-            "info":"Hardcode a custom item into the tier for your pokemon to use. This will take time as the Administrators are busy alot."
-         },
-         "customability":{
-            "display":"Custom Ability",
-            "price":50,
-            "currency":"bucks",
-            "onbuy":"You have purchased a Custom Ability. You are now queued to have your custom ability hardcoded into the format. Please note this can take some time as there may be other users ahead of you, and the Administrators are busy alot. Upper staff has been notified of your purchase and will contact you shortly to ask what you want as your custom ability. Excessively powerful abilities will need to be changed before they are approved.<br/>",
-            "info":"Hardcode a custom ability into the tier for your pokemon to use. This will take time as the Administrators are busy alot."
-         },
-         "custommove":{  
-            "display":"Custom Move",
-            "price":50,
-            "currency":"bucks",
-            "onbuy":"You have purchased a Custom Move. You are now queued to have your custom move hardcoded into the format. Please note this can take some time as there may be other users ahead of you, and the Administrators are busy alot. Upper staff has been notified of your purchase and will contact you shortly to ask what you want as your custom move. Excessively powerful moves will need to be changed before they are approved.<br/>",
-            "info":"Hardcode a custom move into the tier for your pokemon to use. This will take time as the Administrators are busy alot."
+        "guild":{
+             "display":"Guild",
+             "price":150,
+             "currency":"bucks",
+             "onbuy":"You have purchased a Guild. Pm a upperstaff with your 3 guild members to get your guild.",
+             "info":"Make ur own guild of name u choose(Not Banned words)with a guild room"
          }
       }
    },
