@@ -978,7 +978,6 @@ class Tournament {
 			}
 			if ((tourSize >= sizeRequiredToEarn) && this.room.isOfficial) {
 			    WL.leagueTourPoints(toId(winner), toId(runnerUp), tourSize, this.room);
-			    WL.addTourWin(toId(winner));
 			}
 		}
 
