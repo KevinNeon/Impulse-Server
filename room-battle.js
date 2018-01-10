@@ -33,7 +33,7 @@ const TIMER_COOLDOWN = 20 * 1000;
 
 global.Config = require('./config/config');
 
-global.Db = require('nef')(require('nef-mongo')('mongodb://PrinceSky:02352@surge-db-shard-00-00-monbg.mongodb.net:27017,surge-db-shard-00-01-monbg.mongodb.net:27017,surge-db-shard-00-02-monbg.mongodb.net:27017/test?ssl=true&replicaSet=Surge-DB-shard-0&authSource=admin'));
+global.Db = require('nef')(require('nef-fs')('config/db'));
 global.WL = require('./WL.js').WL;
 
 class SimulatorManager extends ProcessManager {
