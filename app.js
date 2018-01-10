@@ -92,9 +92,8 @@ if (Config.watchconfig) {
 
 global.WL = {};
 
-// replace mongo uri with your own mongo uri.
-global.Db = require('nef')(require('nef-mongo')('mongodb://PrinceSky:02352@surge-db-shard-00-00-monbg.mongodb.net:27017,surge-db-shard-00-01-monbg.mongodb.net:27017,surge-db-shard-00-02-monbg.mongodb.net:27017/test?ssl=true&replicaSet=Surge-DB-shard-0&authSource=admin'));
-global.Sb = require('origindb')('mongodb://AllianceSky-PS:02352@surge-sb-shard-00-00-zrvrn.mongodb.net:27017,surge-sb-shard-00-01-zrvrn.mongodb.net:27017,surge-sb-shard-00-02-zrvrn.mongodb.net:27017/test?ssl=true&replicaSet=Surge-SB-shard-0&authSource=admin', {adapter: 'mongo'});
+global.Db = require('nef')(require('nef-fs')('config/db'));
+global.Sb = require('origindb')('config/sb');
 global.sqlite3 = require('sqlite3');
 
 global.Monitor = require('./monitor');
