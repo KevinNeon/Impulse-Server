@@ -661,7 +661,7 @@ exports.commands = {
 		function background(buddy) {
 			let bg = Sb("backgrounds").get(buddy);
 			if (!Sb("backgrounds").has(buddy)) return '<div>';
-			return '<div style="background:url(' + bg + '); background-size: cover;">';
+			return '<div style="background:url(' + bg + '); background-size: 100% 100%;">';
 		}
 
 		function pColor(user) {
