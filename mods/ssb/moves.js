@@ -1,6 +1,31 @@
 "use strict";
 
 exports.BattleMovedex = {
+	// Xirizu
+	highestjumpkick: {
+		category: "Physical",
+		accuracy: 98.5,
+		basePower: 120,
+		id: "highestjumpkick",
+		isNonstandard: true,
+		name: "Highest Jump Kick",
+		pp: 8,
+		noPPBoosts: true,
+		priority: 0,
+		selfdestruct: "no",
+		self: {
+			boosts: {
+				spe: 1,
+			},
+		},
+		onPrepareHit: function (target, source, move) {
+			this.attrLastMove('[still]');
+			this.add('-anim', source, "Dragon Dance", target);
+			this.add('-anim', source, "High Jump Kick", target);
+		},
+		target: "normal",
+		type: "Fighting",
+	},
 	// Insane Assasin
 	assassinsrevenge: {
 		category: "Physical",
