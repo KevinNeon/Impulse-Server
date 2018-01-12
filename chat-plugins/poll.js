@@ -274,10 +274,14 @@ exports.commands = {
 				room.poll.display();
 			}
 
+			room.poll = new Poll(room, {source: params[0], supportHTML: supportHTML}, options);
+			room.poll.display();
+
 			this.roomlog("" + user.name + " used " + message);
-			return this.privateModCommand("(A poll was started by " + user.name + ".)");
+			this.modlog('POLL');
+			return this.privateModAction("(A poll was started by " + user.name + ".)");
 		},
-		newhelp: [`/poll create [question], [option1], [option2], [...] - Creates a poll. Allows up to 5 polls at once. Requires: % @ * # & ~`],
+		newhelp: [`/poll create [question], [option1], [option2], [...] - Creates a poll. Requires: % @ * # & ~`],
 
 		vote: function (target, room, user) {
 			if (!room.poll) return this.errorReply("There is no poll running in this room.");
@@ -324,8 +328,9 @@ exports.commands = {
 					room.poll.end(num);
 					delete room.poll.pollArray[num];
 				}, (timeout * 60000));
-				room.add("The poll timer was turned on: the poll " + room.poll.pollArray[num].pollNum + " will end in " + timeout + " minute(s).");
-				return this.privateModCommand("(The poll timer for poll " + room.poll.pollArray[num].pollNum + " was set to " + timeout + " minute(s) by " + user.name + ".)");
+				room.add("The poll timer was turned on: the poll will end in " + timeout + " minute(s).");
+				this.modlog('POLL TIMER', null, `${timeout} minutes`);
+				return this.privateModAction("(The poll timer was set to " + timeout + " minute(s) by " + user.name + ".)");
 			} else {
 				if (!this.runBroadcast()) return;
 				if (room.poll.pollArray[num].timeout) {
@@ -361,9 +366,12 @@ exports.commands = {
 			if (room.poll.pollArray[num].pollNum === parseInt(target)) room.poll.end(num);
 			if (room.poll.pollArray[num].pollNum === parseInt(target)) delete room.poll.pollArray[num];
 
-			return this.privateModCommand("(A poll was ended by " + user.name + ".)");
+			room.poll.end();
+			delete room.poll;
+			this.modlog('POLL END');
+			return this.privateModAction("(The poll was ended by " + user.name + ".)");
 		},
-		endhelp: [`/poll end [poll id number] - Ends a poll and displays the results. Requires: % @ * # & ~`],
+		endhelp: [`/poll end [id number] - Ends a poll and displays the results. Requires: % @ * # & ~`],
 
 		show: 'display',
 		display: function (target, room, user, connection) {
