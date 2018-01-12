@@ -34,7 +34,7 @@ function reloadCSS() {
 	let options = {
 		host: 'play.pokemonshowdown.com',
 		port: 8080,
-		path: '/customcss.php?server=miso',
+		path: '/customcss.php?server=' + Config.serverName + '',
 		method: 'GET',
 	};
 	http.get(options);
