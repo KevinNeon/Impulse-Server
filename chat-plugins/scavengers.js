@@ -492,8 +492,8 @@ class ScavengerHunt extends Rooms.RoomGame {
 
 			// notify staff
 			let logMsg = `([${player.userid}] has been caught trying to do their own hunt.)`;
-			this.room.sendMods(staffMsg);
-			this.room.roomlog(staffMsg);
+			this.room.sendMods(logMsg);
+			this.room.roomlog(logMsg);
 			this.room.modlog(`(${this.room.id}) ${logMsg}`);
 
 			PlayerLeaderboard.addPoints(player.name, 'infraction', 1);
@@ -508,8 +508,8 @@ class ScavengerHunt extends Rooms.RoomGame {
 			// notify staff
 			let logMsg = `([${player.userid}] has been caught attempting a hunt with ${uniqueConnections} connections on the account. The user has also been given 1 infraction point on the player leaderboard.)`;
 
-			this.room.sendMods(staffMsg);
-			this.room.roomlog(staffMsg);
+			this.room.sendMods(logMsg);
+			this.room.roomlog(logMsg);
 			this.room.modlog(`(${this.room.id}) ${logMsg}`);
 
 			PlayerLeaderboard.addPoints(player.name, 'infraction', 1);

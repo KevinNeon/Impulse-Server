@@ -657,8 +657,8 @@ class Trivia extends Rooms.RoomGame {
 			` mode trivia under the ${this.category} category with a cap of ` +
 			`${this.cap} points, with ${winner.points} points and ` +
 			`${winner.correctAnswers} correct answers!)`;
-		this.room.sendMods(buf);
-		this.room.roomlog(buf);
+		this.room.sendMods(logbuf);
+		this.room.roomlog(logbuf);
 		this.room.modlog(`(${this.room.id}) ${logbuf}`);
 
 		writeTriviaData();
