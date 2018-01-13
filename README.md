@@ -43,7 +43,7 @@ Pokémon Showdown requires you to have [Node.js][6] installed, 8.x or later (7.7
 
 ```bash
 $ git clone https://github.com/AllianceSky-PS/Impulse-Server.git
-cd wavelength && npm install
+cd Impulse-Server && npm install
 node app.js
 ```
 

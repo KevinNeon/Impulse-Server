@@ -33,7 +33,7 @@ const TIMER_COOLDOWN = 20 * 1000;
 
 global.Config = require('./config/config');
 
-global.Db = require('nef')(require('nef-mongo')('mongodb://PrinceSky:02352@surge-db-shard-00-00-monbg.mongodb.net:27017,surge-db-shard-00-01-monbg.mongodb.net:27017,surge-db-shard-00-02-monbg.mongodb.net:27017/test?ssl=true&replicaSet=Surge-DB-shard-0&authSource=admin'));
+global.Db = require('nef')(require('nef-fs')('config/db'));
 global.WL = require('./WL.js').WL;
 
 class SimulatorManager extends ProcessManager {
@@ -513,13 +513,7 @@ class Battle {
 			for (const line of lines.slice(3)) {
 				this.room.add(line);
 			}
-			if (Rooms.global.FvF && Rooms.global.FvF[toId(WL.getFaction(this.room.p1))]) {
-				if (this.format === Rooms(Rooms.global.FvF[toId(WL.getFaction(this.room.p1))].room).fvf.tier && lines[lines.length - 1].split('|')[1] === 'tie') {
-					WL.isFvFBattle(toId(this.room.p1), toId(this.room.p2), this.room.id, 'tie');
-				} else if (this.format === Rooms(Rooms.global.FvF[toId(WL.getFaction(this.room.p1))].room).fvf.tier && lines[lines.length - 1].split('|')[1] === 'win') {
-					WL.isFvFBattle(toId(this.room.p1), toId(this.room.p2), this.room.id, 'p-' + toId(lines[lines.length - 1].split('|')[2]));
-				}
-			}
+
 			this.started = true;
 			if (!this.ended) {
 				this.ended = true;

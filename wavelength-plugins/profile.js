@@ -190,7 +190,7 @@ exports.commands = {
 					'<br />Title Hex Color: ' + color
 				);
 			}
-			this.logModCommand(user.name + " set a custom title to " + userid + "'s profile.");
+			this.logModAction(user.name + " set a custom title to " + userid + "'s profile.");
 			Monitor.log(user.name + " set a custom title to " + userid + "'s profile.");
 			return this.sendReply("Title '" + title + "' and color '" + color + "' for " + userid + "'s custom title have been set.");
 		},
@@ -211,7 +211,7 @@ exports.commands = {
 					'|html|' + WL.nameColor(user.name, true) + " has removed your custom title."
 				);
 			}
-			this.logModCommand(user.name + " removed " + userid + "'s custom title.");
+			this.logModAction(user.name + " removed " + userid + "'s custom title.");
 			Monitor.log(user.name + " removed " + userid + "'s custom title.");
 			return this.sendReply(userid + "'s custom title and title color were removed from the server memory.");
 		},
@@ -573,7 +573,7 @@ exports.commands = {
 		if (!this.runBroadcast()) return;
 		let self = this;
 		let targetUser = Users.get(target);
-		let online = (targetUser ? targetUser.connected : false);
+		//let online = (targetUser ? targetUser.connected : false);
 		let username = (targetUser ? targetUser.name : target);
 		let userid = (targetUser ? targetUser.userid : toId(target));
 		let avatar = (targetUser ? (isNaN(targetUser.avatar) ? "http://" + serverIp + ":" + Config.port + "/avatars/" + targetUser.avatar : "http://play.pokemonshowdown.com/sprites/trainers/" + targetUser.avatar + ".png") : (Config.customavatars[userid] ? "http://" + serverIp + ":" + Config.port + "/avatars/" + Config.customavatars[userid] : "http://play.pokemonshowdown.com/sprites/trainers/1.png"));
@@ -661,7 +661,7 @@ exports.commands = {
 		function background(buddy) {
 			let bg = Sb("backgrounds").get(buddy);
 			if (!Sb("backgrounds").has(buddy)) return '<div>';
-			return '<div style="background:url(' + bg + '); background-size: cover;">';
+			return '<div style="background:url(' + bg + '); background-size: 100% 100%;">';
 		}
 
 		function pColor(user) {
