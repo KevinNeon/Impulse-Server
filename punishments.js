@@ -483,7 +483,7 @@ Punishments.punish = function (user, punishment, recursionKeys) {
  * @param {Punishment} punishment
  */
 Punishments.punishName = function (userid, punishment) {
-	let foundKeys = Punishments.search(userid)[0].map(key => key.split(':')[0]);
+	let foundKeys = Punishments.search(userid)[0].map((/** @type {string} */ key) => key.split(':')[0]);
 	let userids = new Set([userid]);
 	let ips = new Set();
 	for (let key of foundKeys) {
@@ -602,7 +602,7 @@ Punishments.roomPunish = function (room, user, punishment, recursionKeys) {
  * @param {Punishment} punishment
  */
 Punishments.roomPunishName = function (room, userid, punishment) {
-	let foundKeys = Punishments.search(userid)[0].map(key => key.split(':')[0]);
+	let foundKeys = Punishments.search(userid)[0].map((/** @type {string} */ key) => key.split(':')[0]);
 	let userids = new Set([userid]);
 	let ips = new Set();
 	for (let key of foundKeys) {
@@ -1161,6 +1161,15 @@ Punishments.checkName = function (user, userid, registered) {
 	let bannedUnder = ``;
 	if (punishUserid !== userid) bannedUnder = ` because you have the same IP as banned user: ${punishUserid}`;
 
+	if ((id === 'LOCK' || id === 'NAMELOCK') && punishUserid !== user.userid && Punishments.sharedIps.has(user.latestIp)) {
+		if (!user.autoconfirmed) {
+			user.semilocked = `#sharedip ${user.locked}`;
+		}
+		user.locked = false;
+
+		user.updateIdentity();
+		return;
+	}
 	if (registered && id === 'BAN') {
 		user.send(`|popup|Your username (${user.name}) is banned${bannedUnder}. Your ban will expire in a few days.${reason}${appeal}`);
 		user.punishmentNotified = true;
@@ -1208,7 +1217,7 @@ Punishments.checkIp = function (user, connection) {
 		}
 	}
 
-	Dnsbl.reverse(ip).catch(e => {
+	Dnsbl.reverse(ip).catch((/** @type {Error} */ e) => {
 		// If connection.user is reassigned before async tasks can run, user
 		// may no longer be equal to it.
 		user = connection.user || user;
@@ -1220,14 +1229,14 @@ Punishments.checkIp = function (user, connection) {
 			return null;
 		}
 		throw e;
-	}).then(host => {
+	}).then((/** @type {string} */ host) => {
 		user = connection.user || user;
 		if (host) user.latestHost = host;
 		Chat.hostfilter(host, user, connection);
 	});
 
 	if (Config.dnsbl) {
-		Dnsbl.query(connection.ip).then(isBlocked => {
+		Dnsbl.query(connection.ip).then((/** @type {boolean} */ isBlocked) => {
 			user = connection.user || user;
 			if (isBlocked) {
 				if (!user.locked && !user.autoconfirmed) {
@@ -1371,7 +1380,10 @@ Punishments.isRoomBanned = function (user, roomid) {
 		}
 	}
 
-	if (Rooms(roomid).parent) return Punishments.isRoomBanned(user, Rooms(roomid).parent.id);
+	const room = Rooms(roomid);
+	if (!room) throw new Error(`Trying to ban a user from a nonexistent room: ${roomid}`);
+
+	if (room.parent) return Punishments.isRoomBanned(user, room.parent.id);
 };
 
 /**

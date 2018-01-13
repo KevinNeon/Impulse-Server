@@ -129,8 +129,8 @@ exports.commands = {
 
 			if (usersMoney < cost) return this.errorReply('You do not have enough bucks to purchase ' + itemID + '.');
 
-			Db.currency.set(user.userid, usersMoney - cost).get(user.userid);
-			Db.currency.set(bank, banksMoney + cost).get(bank);
+			Db.currency.set(user.userid, usersMoney - cost, Db.currency.get(user.userid));
+			Db.currency.set(bank, banksMoney + cost, Db.currency.get(bank));
 			Sb('roomshop').set();
 
 			if (!fs.existsSync('logs/roomshops')) fs.mkdirSync('logs/roomshops');

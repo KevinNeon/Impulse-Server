@@ -63,7 +63,7 @@ exports.commands = {
 
 	u: 'ud',
 	ud: function (target, room, user) {
-		//if (this.runBroadcast() && room.id === 'lobby') return this.sendReply("Minors use Pokemon Showdown so it is probably a bad idea to broadcast this command.");
+		if (this.runBroadcast() && room.id === 'lobby') return this.sendReply("Minors use Pokemon Showdown so it is probably a bad idea to broadcast this command.");
 		if (!this.runBroadcast()) return;
 		if (!target) return this.parse('/help urbandefine');
 		if (target.toString() > 50) return this.sendReply('Phrase can not be longer than 50 characters.');

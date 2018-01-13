@@ -789,7 +789,7 @@ exports.commands = {
 			leagues[leagueid].pendingInvites.splice(leagues[leagueid].pendingInvites.indexOf(user.userid), 1);
 			save();
 			leagueLog(user.name + " has declined their invitation to join the guild.", leagueid);
-			leaguePM(WL.ameColor(user.name, true) + " has declined their invitation to join the guild.", leagueid);
+			leaguePM(WL.nameColor(user.name, true) + " has declined their invitation to join the guild.", leagueid);
 			user.popup("You've declined the invitation to join " + leagues[leagueid].name + ".");
 		},
 
